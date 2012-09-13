@@ -159,7 +159,7 @@ if has("autocmd")
 
 endif " has("autocmd")
 
-let g:SuperTabDefaultCompletionType = "context"
+"let g:SuperTabDefaultCompletionType = "context"
 set completeopt=menuone,longest,preview
 
 "left over from builds at Evertz
@@ -190,14 +190,10 @@ endfunction
 colorscheme darkblue+
 let g:template_username="Chris Lambacher"
 
-if hostname() == "minerva"
-    set makeprg=rtsh\ slappy\ gmake\ -C\ `pwd`
-endif
-
 "tSkeleton Options
 let g:tskelBitGroup_aspvbs = ['aspvbs', 'ciocvbs', 'html', 'css']
 
 let g:pyflakes_use_quickfix=0
-let g:syntastic_python_checker_args= '--ignore=W191'
+let g:syntastic_python_checker_args= '--ignore=W191,E121,E122,E123,E128,E501'
 let g:syntastic_check_on_open=1
 

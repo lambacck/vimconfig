@@ -46,3 +46,9 @@
 [submodule "bundle/vim-jsbeautify"]
 	path = bundle/vim-jsbeautify
 	url = https://github.com/maksimr/vim-jsbeautify.git
+[submodule "bundle/vim-matchit"]
+	path = bundle/vim-matchit
+	url = git@github.com:lambacck/vim-matchit.git
+[submodule "bundle/python_matchit"]
+	path = bundle/python_matchit
+	url = git@github.com:lambacck/python_matchit.git
