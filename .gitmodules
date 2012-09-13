@@ -52,3 +52,6 @@
 [submodule "bundle/python_matchit"]
 	path = bundle/python_matchit
 	url = git@github.com:lambacck/python_matchit.git
+[submodule "bundle/vim-repeat"]
+	path = bundle/vim-repeat
+	url = https://github.com/vim-scripts/repeat.vim
