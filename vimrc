@@ -138,10 +138,14 @@ if has("autocmd")
 
     " fix settings for this python only project
     autocmd BufRead,BufNewFile */cioc/VirtualServers/CommunityManager/* setlocal et tags=tags
+    autocmd BufRead,BufNewFile */cioc/VirtualServers/ClientTracker/* setlocal et tags=tags
+    autocmd BufRead,BufNewFile */cioc/VirtualServers/ClientTracker/* let g:syntastic_python_checker_args = '--ignore=E501 --builtins=_'
 
     autocmd BufNewFile */wwwroot/{chris_cioc,cioc,cioc_released}/includes/*.asp TSkeletonSetup ciocinc.asp
     autocmd BufNewFile */wwwroot/{chris_cioc,cioc,cioc_released}/text/*.asp TSkeletonSetup cioctext.asp
     autocmd BufNewFile */wwwroot/{chris_cioc,cioc,cioc_released}/{admin/,volunteer/,}*.asp TSkeletonSetup ciocbase.asp 
+
+    autocmd FileType gitcommit call setpos('.', [0, 1, 1, 0])
 
     " When editing a file, always jump to the last known cursor position.
     " Don't do it when the position is invalid or when inside an event handler
@@ -155,7 +159,7 @@ if has("autocmd")
     " comment.  This fixes that.
     autocmd BufEnter * :syntax sync fromstart
 
-    au FileType python set omnifunc=pythoncomplete#Complete
+    " au FileType python set omnifunc=pythoncomplete#Complete
 
 endif " has("autocmd")
 
@@ -186,6 +190,11 @@ function! <SID>GoToBufDir()
     endif   
     echomsg "pwd is" getcwd()
 endfunction
+
+" Re-indents buffer.
+nmap <silent> <Leader>g :call Preserve("normal gg=G")<CR>
+" Removes all trailing whitespace in buffer.
+nmap <silent> <Leader><space> :call Preserve("%s/\\s\\+$//e")<CR>
 
 colorscheme darkblue+
 let g:template_username="Chris Lambacher"
