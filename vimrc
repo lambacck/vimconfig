@@ -1,3 +1,7 @@
+let g:pathogen_disabled = []
+
+" Example for disabling a pathogen path
+" call add(g:pathogen_disabled, 'vim-css')
 
 set nocompatible
 
@@ -14,6 +18,9 @@ if has("win32")
     let g:netrw_ssh_cmd  = 'C:\"Program Files (x86)"\PuTTY\plink.exe -T -ssh'
     let g:netrw_scp_cmd  = 'C:\"Program Files (x86)"\PuTTY\pscp.exe -q -scp'
     let g:netrw_sftp_cmd = 'C:\"Program Files (x86)"\PuTTY\pscp.exe -q -sftp'
+else
+    set grepprg=ack-grep\ --type-set\ scss=.scss\ --nocolour
+    set grepformat=%f:%l:%m
 endif
 
 if has("multi_byte")    " if not, we need to recompile
@@ -75,6 +82,7 @@ inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
 
+
 runtime bundle/pathogen/autoload/pathogen.vim
 call pathogen#infect()
 
@@ -84,9 +92,10 @@ if &t_Co > 2 || has("gui_running")
     set hlsearch
 endif
 if has("gui_running")
+    set guioptions+=c
     if has("gui_gtk2")
-        if $DISPLAY=="localhost:10.0"
-            set guifont=ProggyCleanTT\ 16
+        if matchstr($SSH_CLIENT, '^10.66.66.\d\+ .*')
+            set guifont=ProggyCleanTT\ 15
         else
             set guifont=ProggyCleanTT\ 12
         endif

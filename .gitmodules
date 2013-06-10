@@ -19,9 +19,6 @@
 [submodule "bundle/aspvbs"]
 	path = bundle/aspvbs
 	url = https://github.com/lambacck/aspvbs.vim.git
-[submodule "bundle/vim-css"]
-	path = bundle/vim-css
-	url = git://github.com/lepture/vim-css.git
 [submodule "bundle/syntastic"]
 	path = bundle/syntastic
 	url = git://github.com/scrooloose/syntastic.git
@@ -61,3 +58,9 @@
 [submodule "bundle/preserve-vim"]
 	path = bundle/preserve-vim
 	url = https://github.com/lambacck/preserve-vim.git
+[submodule "bundle/vim-less"]
+	path = bundle/vim-less
+	url = https://github.com/groenewege/vim-less.git
+[submodule "bundle/vim-css3-syntax"]
+	path = bundle/vim-css3-syntax
+	url = https://github.com/hail2u/vim-css3-syntax.git
