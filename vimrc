@@ -1,7 +1,8 @@
 let g:pathogen_disabled = []
-
 " Example for disabling a pathogen path
 " call add(g:pathogen_disabled, 'vim-css')
+
+let g:syntastic_less_use_less_lint = 1
 
 set nocompatible
 
