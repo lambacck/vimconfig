@@ -149,7 +149,7 @@ if has("autocmd")
     " fix settings for this python only project
     autocmd BufRead,BufNewFile */cioc/VirtualServers/CommunityManager/* setlocal et tags=tags
     autocmd BufRead,BufNewFile */cioc/VirtualServers/ClientTracker/* setlocal et tags=tags
-    autocmd BufRead,BufNewFile */cioc/VirtualServers/ClientTracker/* let g:syntastic_python_checker_args = '--ignore=E501 --builtins=_'
+    autocmd BufRead,BufNewFile */cioc/VirtualServers/ClientTracker/* let g:syntastic_python_flake8_args = '--ignore=E501 --builtins=_'
 
     autocmd BufNewFile */wwwroot/{chris_cioc,cioc,cioc_released}/includes/*.asp TSkeletonSetup ciocinc.asp
     autocmd BufNewFile */wwwroot/{chris_cioc,cioc,cioc_released}/text/*.asp TSkeletonSetup cioctext.asp
@@ -213,6 +213,6 @@ let g:template_username="Chris Lambacher"
 let g:tskelBitGroup_aspvbs = ['aspvbs', 'ciocvbs', 'html', 'css']
 
 let g:pyflakes_use_quickfix=0
-let g:syntastic_python_checker_args= '--ignore=W191,E121,E122,E123,E128,E501'
+let g:syntastic_python_flake8_args= '--ignore=W191,E121,E122,E123,E128,E501'
 let g:syntastic_check_on_open=1
 
