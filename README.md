@@ -9,7 +9,7 @@ Have fun and fork at will! :)
 # Quick start
 
 1. Clone this repo: `git clone git://github.com/lambacck/vimconfig.git ~/.vim` - **Be careful not to override your own configuration...**
-2. Initialize the [Vundle](http://github.com/gmarik/vundle) plugin as a sub-repository:
+2. Initialize the plugins as a sub-repositories:
 
         git submodule init
         git submodule update
