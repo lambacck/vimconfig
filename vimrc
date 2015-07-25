@@ -170,7 +170,7 @@ if has("autocmd")
     autocmd BufEnter * :syntax sync fromstart
 
     " au FileType python set omnifunc=pythoncomplete#Complete
-
+    autocmd BufWinEnter * if line2byte(line("$") + 1) > 1000000 | syntax clear | endif
 endif " has("autocmd")
 
 "let g:SuperTabDefaultCompletionType = "context"

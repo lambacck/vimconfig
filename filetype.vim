@@ -9,4 +9,5 @@ augroup filetypedetect
     au! BufRead,BufNewFile *.mak    setfiletype mako
     au! BufRead,BufNewFile *_setup_page_edit.aspPageHelp*.txt   setfiletype html
     au! BufRead,BufNewFile *.aspx setfiletype aspxcs
+    au! BufRead,BufNewFile Vagrantfile setfiletype ruby
 augroup END
