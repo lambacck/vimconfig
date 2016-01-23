@@ -7,7 +7,6 @@ let g:syntastic_less_use_less_lint = 1
 set nocompatible
 
 if has("win32")
-    set go+=a
     "set shell=bash
     "set shellpipe=2>&1\ \|\ tee
     set grepprg=ack\ --type-set\ asp=.asp\ --column
@@ -20,7 +19,7 @@ if has("win32")
     let g:netrw_scp_cmd  = 'C:\"Program Files (x86)"\PuTTY\pscp.exe -q -scp'
     let g:netrw_sftp_cmd = 'C:\"Program Files (x86)"\PuTTY\pscp.exe -q -sftp'
 else
-    set grepprg=ag
+    set grepprg=ag\ --nocolor
     set grepformat=%f:%l:%m
 endif
 
@@ -61,6 +60,7 @@ set wildmode=list:longest
 set history=500
 set visualbell
 set relativenumber
+set textwidth=99
 "set undofile
 "set scrolloff=3
 "set ignorecase
@@ -94,6 +94,7 @@ if &t_Co > 2 || has("gui_running")
 endif
 if has("gui_running")
     set guioptions+=c
+    set guioptions+=a
     if has("gui_gtk2")
         if matchstr($SSH_CLIENT, '^10.66.66.\d\+ .*')
             set guifont=ProggyCleanTT\ 15
@@ -103,7 +104,7 @@ if has("gui_running")
     else
         "win32 or non gtk2 version of vim
         set guifont=ProggyCleanTT:h12:cANSI,-*-proggyclean-*-*-*-*-*-*-*-*-*-*-*-*
-        if has("multi_byte")
+        if has("multi_byte") && !has("gui_macvim")
             set guifontwide=NSimSun:h12:cGB2312,Consolas:h12:cGB2312
         endif
     endif
@@ -213,6 +214,5 @@ let g:template_username="Chris Lambacher"
 let g:tskelBitGroup_aspvbs = ['aspvbs', 'ciocvbs', 'html', 'css']
 
 let g:pyflakes_use_quickfix=0
-let g:syntastic_python_flake8_args= '--ignore=W191,E121,E122,E123,E128,E501'
 let g:syntastic_check_on_open=1
-
+let g:syntastic_javascript_checkers = ['eslint']
