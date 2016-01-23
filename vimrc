@@ -20,7 +20,7 @@ if has("win32")
     let g:netrw_scp_cmd  = 'C:\"Program Files (x86)"\PuTTY\pscp.exe -q -scp'
     let g:netrw_sftp_cmd = 'C:\"Program Files (x86)"\PuTTY\pscp.exe -q -sftp'
 else
-    set grepprg=ack-grep\ --type-set\ scss=.scss\ --nocolour
+    set grepprg=ag
     set grepformat=%f:%l:%m
 endif
 
