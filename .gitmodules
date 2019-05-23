@@ -73,3 +73,9 @@
 [submodule "bundle/github-vim"]
 	path = bundle/github-vim
 	url = https://github.com/solars/github-vim.git
+[submodule "bundle/ale"]
+	path = bundle/ale
+	url = https://github.com/w0rp/ale.git
+[submodule "bundle/vim-go"]
+	path = bundle/vim-go
+	url = https://github.com/fatih/vim-go.git

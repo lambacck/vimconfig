@@ -1,10 +1,24 @@
 let g:pathogen_disabled = []
 " Example for disabling a pathogen path
 " call add(g:pathogen_disabled, 'vim-css')
+call add(g:pathogen_disabled, 'syntastic')
 
 let g:syntastic_less_use_less_lint = 1
 
 set nocompatible
+
+let g:ale_fix_on_save=1
+" Debugging settings to be uncommented
+"let g:ale_history_enabled=1
+"let g:ale_history_log_output=1
+let g:ale_completion_enabled = 1
+let g:ale_go_golint_executable = expand('~/go/bin/golint')  " Probably unnecessary if you have GOPATH set everywhere
+let g:ale_linters = {'go': ['golint', 'govet'], 'python': ['flake8', 'pylint']}
+let g:ale_fixers = {'java': ['google_java_format'], 'python': ['black'], 'go': ['gofmt']}
+" ALE Rust
+let g:ale_rust_cargo_use_clippy=1
+" ALE Java
+let g:ale_java_google_java_format_options='-a'
 
 if has("win32")
     "set shell=bash
@@ -21,6 +35,7 @@ if has("win32")
 else
     set grepprg=ag\ --nocolor
     set grepformat=%f:%l:%m
+    set shell=/bin/sh
 endif
 
 if has("multi_byte")    " if not, we need to recompile
