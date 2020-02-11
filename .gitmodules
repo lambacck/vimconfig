@@ -21,10 +21,10 @@
 	url = https://github.com/lambacck/aspvbs.vim.git
 [submodule "bundle/syntastic"]
 	path = bundle/syntastic
-	url = git://github.com/scrooloose/syntastic.git
+	url = git://github.com/vim-syntastic/syntastic.git
 [submodule "bundle/fugitive"]
 	path = bundle/fugitive
-	url = http://github.com/tpope/vim-fugitive.git
+	url = https://github.com/tpope/vim-fugitive.git
 [submodule "bundle/git"]
 	path = bundle/git
 	url = https://github.com/tpope/vim-git.git
@@ -48,7 +48,7 @@
 	url = https://github.com/lambacck/python_matchit.git
 [submodule "bundle/vim-repeat"]
 	path = bundle/vim-repeat
-	url = https://github.com/vim-scripts/repeat.vim
+	url = https://github.com/tpope/repeat.vim
 [submodule "bundle/vim-python-pep8-indent"]
 	path = bundle/vim-python-pep8-indent
 	url = https://github.com/hynek/vim-python-pep8-indent.git
