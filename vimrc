@@ -7,6 +7,7 @@ let g:syntastic_less_use_less_lint = 1
 
 set nocompatible
 
+let g:go_version_warning = 0
 let g:ale_fix_on_save=1
 " Debugging settings to be uncommented
 "let g:ale_history_enabled=1
