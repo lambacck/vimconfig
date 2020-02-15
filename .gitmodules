@@ -12,16 +12,16 @@
 	url = https://github.com/lambacck/VisIncr.git
 [submodule "bundle/a"]
 	path = bundle/a
-	url = git://github.com/vim-scripts/a.vim.git
+	url = https://github.com/vim-scripts/a.vim.git
 [submodule "bundle/surround"]
 	path = bundle/surround
-	url = git://github.com/tpope/vim-surround.git
+	url = https://github.com/tpope/vim-surround.git
 [submodule "bundle/aspvbs"]
 	path = bundle/aspvbs
 	url = https://github.com/lambacck/aspvbs.vim.git
 [submodule "bundle/syntastic"]
 	path = bundle/syntastic
-	url = git://github.com/scrooloose/syntastic.git
+	url = https://github.com/scrooloose/syntastic.git
 [submodule "bundle/fugitive"]
 	path = bundle/fugitive
 	url = http://github.com/tpope/vim-fugitive.git
@@ -63,13 +63,16 @@
 	url = https://github.com/hail2u/vim-css3-syntax.git
 [submodule "bundle/vim-obsession"]
 	path = bundle/vim-obsession
-	url = git://github.com/tpope/vim-obsession.git
+	url = https://github.com/tpope/vim-obsession.git
 [submodule "bundle/vim-python-combined"]
 	path = bundle/vim-python-combined
-	url = git://github.com/mitsuhiko/vim-python-combined.git
+	url = https://github.com/mitsuhiko/vim-python-combined.git
 [submodule "bundle/vim-unimpaired"]
 	path = bundle/vim-unimpaired
-	url = git://github.com/tpope/vim-unimpaired.git
+	url = https://github.com/tpope/vim-unimpaired.git
 [submodule "bundle/github-vim"]
 	path = bundle/github-vim
 	url = https://github.com/solars/github-vim.git
+[submodule "bundle/vim-sleuth"]
+	path = bundle/vim-sleuth
+	url = https://github.com/tpope/vim-sleuth.git
