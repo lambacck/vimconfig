@@ -82,3 +82,6 @@
 [submodule "bundle/vim-rhubarb"]
 	path = bundle/vim-rhubarb
 	url = https://github.com/tpope/vim-rhubarb.git
+[submodule "bundle/vim-repeat-new"]
+	path = bundle/vim-repeat-new
+	url = https://github.com/tpope/vim-repeat.git
