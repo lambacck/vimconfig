@@ -85,3 +85,6 @@
 [submodule "bundle/vim-repeat-new"]
 	path = bundle/vim-repeat-new
 	url = https://github.com/tpope/vim-repeat.git
+[submodule "bundle/ack.vim"]
+	path = bundle/ack.vim
+	url = https://github.com/mileszs/ack.vim.git

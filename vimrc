@@ -1,3 +1,15 @@
+" To bootstrap this on unix, simlink this file to ~/.vimrc
+" To bootstrap this on windows copy the following lines into ~/.vimrc
+"
+" if has("win32")
+"    source $HOME/vimfiles/vimrc
+" else
+"    setg runtimepath=~/vimfiles
+"    source ~/vimfiles/vimrc
+" endif
+"
+" The above will make it work with windows installer vim and git bash vim.
+"
 let g:pathogen_disabled = []
 " Example for disabling a pathogen path
 " call add(g:pathogen_disabled, 'vim-css')
@@ -21,22 +33,14 @@ let g:ale_rust_cargo_use_clippy=1
 " ALE Java
 let g:ale_java_google_java_format_options='-a'
 
+if executable('ag')
+    let g:ackprg = 'ag --vimgrep'
+endif
 if has("win32")
-    "set shell=bash
-    "set shellpipe=2>&1\ \|\ tee
-    set grepprg=ack\ --type-set\ asp=.asp\ --column
-    set grepformat=%f:%l:%c:%m
-    "set shellslash
-
-
     let g:netrw_cygwin = 0
-    let g:netrw_ssh_cmd  = 'C:\"Program Files (x86)"\PuTTY\plink.exe -T -ssh'
-    let g:netrw_scp_cmd  = 'C:\"Program Files (x86)"\PuTTY\pscp.exe -q -scp'
-    let g:netrw_sftp_cmd = 'C:\"Program Files (x86)"\PuTTY\pscp.exe -q -sftp'
-else
-    set grepprg=ag\ --nocolor
-    set grepformat=%f:%l:%m
-    set shell=/bin/sh
+    let g:netrw_ssh_cmd  = 'C:\"Program Files"\PuTTY\plink.exe -T -ssh'
+    let g:netrw_scp_cmd  = 'C:\"Program Files"\PuTTY\pscp.exe -q -scp'
+    let g:netrw_sftp_cmd = 'C:\"Program Files"\PuTTY\pscp.exe -q -sftp'
 endif
 
 if has("multi_byte")    " if not, we need to recompile
@@ -50,7 +54,7 @@ if has("multi_byte")    " if not, we need to recompile
   endif
   set fencs=ucs-bom,utf-8,latin1
   setg bomb             " default for new Unicode files
-  setg fenc=latin1      " default for files created from scratch
+  setg fenc=utf-8       " default for files created from scratch
 else
   echomsg 'Warning: Multibyte support is not compiled-in.'
 endif
