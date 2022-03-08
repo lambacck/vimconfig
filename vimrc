@@ -36,6 +36,11 @@ let g:ale_java_google_java_format_options='-a'
 if executable('ag')
     let g:ackprg = 'ag --vimgrep'
 endif
+
+if $GITHUB_ENTERPRISE_URLS != ""
+    let g:github_enterprise_urls = split($GITHUB_ENTERPRISE_URLS)
+endif
+
 if has("win32")
     let g:netrw_cygwin = 0
     let g:netrw_ssh_cmd  = 'C:\"Program Files"\PuTTY\plink.exe -T -ssh'
