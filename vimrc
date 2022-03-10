@@ -41,6 +41,13 @@ if $GITHUB_ENTERPRISE_URLS != ""
     let g:github_enterprise_urls = split($GITHUB_ENTERPRISE_URLS)
 endif
 
+let test#strategy='dispatch_background'
+let test#python#runner='pytest'
+if $PYTEST_EXECUTABLE != ""
+    "For example: foreman run -e env.defaults,.env,.env.test pytest
+    let test#python#pytest#executable=$PYTEST_EXECUTABLE
+endif
+
 if has("win32")
     let g:netrw_cygwin = 0
     let g:netrw_ssh_cmd  = 'C:\"Program Files"\PuTTY\plink.exe -T -ssh'
