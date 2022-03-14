@@ -19,6 +19,7 @@ let g:syntastic_less_use_less_lint = 1
 
 set nocompatible
 
+let g:ack_use_dispatch=1
 let g:go_version_warning = 0
 let g:ale_fix_on_save=1
 " Debugging settings to be uncommented
@@ -35,6 +36,8 @@ let g:ale_java_google_java_format_options='-a'
 
 if executable('ag')
     let g:ackprg = 'ag --vimgrep'
+    setg grepprg=ag\ --vimgrep
+    setg grepformat=%f:%l:%c:%m,%f:%l:%m
 endif
 
 if $GITHUB_ENTERPRISE_URLS != ""
@@ -127,16 +130,18 @@ endif
 if has("gui_running")
     set guioptions+=c
     set guioptions+=a
-    if has("gui_gtk2")
+    if has("gui_macvim")
+        set guifont=CaskaydiaCoveNerdFontCompleteM-:h12
+    elseif has("gui_gtk2")
         if matchstr($SSH_CLIENT, '^10.66.66.\d\+ .*')
             set guifont=ProggyCleanTT\ 15
         else
             set guifont=ProggyCleanTT\ 12
         endif
-    else
-        "win32 or non gtk2 version of vim
-        set guifont=ProggyCleanTT:h12:cANSI,-*-proggyclean-*-*-*-*-*-*-*-*-*-*-*-*
-        if has("multi_byte") && !has("gui_macvim")
+    elseif has("gui_win32")
+        "win32 
+        set guifont=CaskaydiaCove_NF:h12:cANSI:qDRAFT
+        if has("multi_byte")
             set guifontwide=NSimSun:h12:cGB2312,Consolas:h12:cGB2312
         endif
     endif
@@ -176,17 +181,12 @@ if has("autocmd")
 
 	" Defaults for working with cioc stuff
 	"autocmd FileType aspvbs setlocal noet sw=4 ts=4
-    autocmd BufRead,BufNewFile */wwwroot/{chris_cioc,cioc,cioc_released}/* setlocal noet tags=tags,dimtags
-    autocmd BufRead,BufNewFile */cioc/VirtualServers/* setlocal noet tags=tags,dimtags
+    autocmd BufRead,BufNewFile */VirtualServers/* setlocal noet tags=tags
 
     " fix settings for this python only project
-    autocmd BufRead,BufNewFile */cioc/VirtualServers/CommunityManager/* setlocal et tags=tags
-    autocmd BufRead,BufNewFile */cioc/VirtualServers/ClientTracker/* setlocal et tags=tags
-    autocmd BufRead,BufNewFile */cioc/VirtualServers/ClientTracker/* let g:syntastic_python_flake8_args = '--ignore=E501 --builtins=_'
-
-    autocmd BufNewFile */wwwroot/{chris_cioc,cioc,cioc_released}/includes/*.asp TSkeletonSetup ciocinc.asp
-    autocmd BufNewFile */wwwroot/{chris_cioc,cioc,cioc_released}/text/*.asp TSkeletonSetup cioctext.asp
-    autocmd BufNewFile */wwwroot/{chris_cioc,cioc,cioc_released}/{admin/,volunteer/,}*.asp TSkeletonSetup ciocbase.asp 
+    autocmd BufRead,BufNewFile */VirtualServers/CommunityManager/* setlocal et tags=tags
+    autocmd BufRead,BufNewFile */VirtualServers/ClientTracker/* setlocal et tags=tags
+    autocmd BufRead,BufNewFile */VirtualServers/ClientTracker/* let g:syntastic_python_flake8_args = '--ignore=E501 --builtins=_'
 
     autocmd FileType gitcommit call setpos('.', [0, 1, 1, 0])
 
