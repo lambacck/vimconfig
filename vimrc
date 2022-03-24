@@ -4,7 +4,8 @@
 " if has("win32")
 "    source $HOME/vimfiles/vimrc
 " else
-"    setg runtimepath=~/vimfiles
+"    " Support vim under git bash
+"    setg runtimepath=~/vimfiles,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,~/vimfiles/after
 "    source ~/vimfiles/vimrc
 " endif
 "
@@ -239,7 +240,10 @@ nmap <silent> <Leader>g :call Preserve("normal gg=G")<CR>
 " Removes all trailing whitespace in buffer.
 nmap <silent> <Leader><space> :call Preserve("%s/\\s\\+$//e")<CR>
 
-colorscheme darkblue+
+if has("gui_running")
+    colorscheme darkblue+
+endif
+
 let g:template_username="Chris Lambacher"
 
 "tSkeleton Options
