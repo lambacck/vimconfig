@@ -34,6 +34,8 @@ let g:ale_fixers = {'java': ['google_java_format'], 'python': ['black'], 'go': [
 let g:ale_rust_cargo_use_clippy=1
 " ALE Java
 let g:ale_java_google_java_format_options='-a'
+let g:pydocstring_doq_path = 'doq'
+let let g:pydocstring_formatter = 'sphinx'
 
 if executable('ag')
     let g:ackprg = 'ag --vimgrep'
