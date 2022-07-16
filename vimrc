@@ -122,8 +122,9 @@ nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
 
 
-runtime bundle/pathogen/autoload/pathogen.vim
-call pathogen#infect()
+runtime vimplug_config.vim
+"runtime bundle/pathogen/autoload/pathogen.vim
+"call pathogen#infect()
 
 "turn on syntax highlighting and search highlighting
 if &t_Co > 2 || has("gui_running")
@@ -254,3 +255,31 @@ let g:tskelBitGroup_aspvbs = ['aspvbs', 'ciocvbs', 'html', 'css']
 let g:pyflakes_use_quickfix=0
 let g:syntastic_check_on_open=1
 let g:syntastic_javascript_checkers = ['eslint']
+function! LinterStatus() abort
+  let l:counts = ale#statusline#Count(bufnr(''))
+
+  let l:all_errors = l:counts.error + l:counts.style_error
+  let l:all_non_errors = l:counts.total - l:all_errors
+
+  return l:counts.total == 0 ? '✨ all good ✨' : printf(
+        \   '😞 %dW %dE',
+        \   all_non_errors,
+        \   all_errors
+        \)
+endfunction
+
+set statusline=
+set statusline+=%m
+set statusline+=\ %f
+set statusline+=%=
+set statusline+=\ %{LinterStatus()}
+
+nmap <silent> gd <Plug>(coc-definition)
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
