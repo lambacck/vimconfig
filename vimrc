@@ -244,7 +244,7 @@ nmap <silent> <Leader>g :call Preserve("normal gg=G")<CR>
 nmap <silent> <Leader><space> :call Preserve("%s/\\s\\+$//e")<CR>
 
 if has("gui_running")
-    colorscheme darkblue+
+    colorscheme onedark
 endif
 
 let g:template_username="Chris Lambacher"
