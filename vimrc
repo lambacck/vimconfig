@@ -24,18 +24,22 @@ let g:ack_use_dispatch=1
 let g:go_version_warning = 0
 let g:ale_fix_on_save=1
 " Debugging settings to be uncommented
-"let g:ale_history_enabled=1
-"let g:ale_history_log_output=1
+" let g:ale_history_enabled=1
+" let g:ale_history_log_output=1
 let g:ale_completion_enabled = 1
+if executable('tan')
+    let g:ale_python_black_executable='tan'
+endif
+
 let g:ale_go_golint_executable = expand('~/go/bin/golint')  " Probably unnecessary if you have GOPATH set everywhere
 let g:ale_linters = {'go': ['golint', 'govet'], 'python': ['flake8', 'pylint']}
-let g:ale_fixers = {'java': ['google_java_format'], 'python': ['black'], 'go': ['gofmt']}
+let g:ale_fixers = {'*': ['remove_trailing_lines', 'trim_whitespace'], 'java': ['google_java_format'], 'python': ['black'], 'go': ['gofmt']}
 " ALE Rust
 let g:ale_rust_cargo_use_clippy=1
 " ALE Java
 let g:ale_java_google_java_format_options='-a'
 let g:pydocstring_doq_path = $HOME . '/.local/bin/doq'
-let g:pydocstring_formatter = 'sphinx'
+let g:pydocstring_formatter = 'google'
 
 if executable('ag')
     let g:ackprg = 'ag --vimgrep'
@@ -71,7 +75,7 @@ if has("multi_byte")    " if not, we need to recompile
                         " to represent all Unicode codepoints in memory
   endif
   set fencs=ucs-bom,utf-8,latin1
-  setg bomb             " default for new Unicode files
+  set nobomb             " default for new Unicode files
   setg fenc=utf-8       " default for files created from scratch
 else
   echomsg 'Warning: Multibyte support is not compiled-in.'
@@ -142,10 +146,10 @@ if has("gui_running")
             set guifont=ProggyCleanTT\ 12
         endif
     elseif has("gui_win32")
-        "win32 
+        "win32
         set guifont=CaskaydiaCove_NF:h12:cANSI:qDRAFT
         if has("multi_byte")
-            set guifontwide=NSimSun:h12:cGB2312,Consolas:h12:cGB2312
+            set guifontwide=CascadiaCode:h12:cGB2312,Consolas:h12:cGB2312
         endif
     endif
 endif
@@ -182,9 +186,9 @@ if has("autocmd")
     " Wiki indentation is 3 spaces
     autocmd FileType twikiSyntax setlocal ts=3 sw=3 noai nocin spell spelllang=en_gb
 
-	" Defaults for working with cioc stuff
-	"autocmd FileType aspvbs setlocal noet sw=4 ts=4
-    autocmd BufRead,BufNewFile */VirtualServers/* setlocal noet tags=tags
+    " Defaults for working with cioc stuff
+    autocmd FileType aspvbs setlocal noet sw=4 ts=4 bomb
+    " autocmd BufRead,BufNewFile *.asp setlocal noet tags=tags
 
     " fix settings for this python only project
     autocmd BufRead,BufNewFile */VirtualServers/CommunityManager/* setlocal et tags=tags
@@ -233,7 +237,7 @@ function! <SID>GoToBufDir()
     let l:dir = substitute(expand("%"), "[/\\\\]\\?[^/\\\\]*$", "", "")
     if(l:dir != "")
         execute("cd " . l:dir)
-    endif   
+    endif
     echomsg "pwd is" getcwd()
 endfunction
 
