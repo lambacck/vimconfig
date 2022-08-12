@@ -47,7 +47,7 @@ if $GITHUB_ENTERPRISE_URLS != ""
     let g:github_enterprise_urls = split($GITHUB_ENTERPRISE_URLS)
 endif
 
-let test#strategy='dispatch_background'
+let test#strategy='dispatch'
 let test#python#runner='pytest'
 if $PYTEST_EXECUTABLE != ""
     "For example: foreman run -e env.defaults,.env,.env.test pytest
@@ -71,7 +71,7 @@ if has("multi_byte")    " if not, we need to recompile
                         " to represent all Unicode codepoints in memory
   endif
   set fencs=ucs-bom,utf-8,latin1
-  setg bomb             " default for new Unicode files
+  setg nobomb             " default for new Unicode files
   setg fenc=utf-8       " default for files created from scratch
 else
   echomsg 'Warning: Multibyte support is not compiled-in.'
@@ -272,6 +272,11 @@ set statusline=
 set statusline+=%m
 set statusline+=\ %f
 set statusline+=%=
+set statusline+=%c
+set statusline+=,
+set statusline+=%l
+set statusline+=/
+set statusline+=%L
 set statusline+=\ %{LinterStatus()}
 
 nmap <silent> gd <Plug>(coc-definition)
