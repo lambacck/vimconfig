@@ -287,3 +287,4 @@ function! s:show_documentation()
     call CocAction('doHover')
   endif
 endfunction
+nmap <leader>rn <Plug>(coc-rename)
