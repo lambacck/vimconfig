@@ -11,21 +11,14 @@
 "
 " The above will make it work with windows installer vim and git bash vim.
 "
-let g:pathogen_disabled = []
-" Example for disabling a pathogen path
-" call add(g:pathogen_disabled, 'vim-css')
-call add(g:pathogen_disabled, 'syntastic')
-
-let g:syntastic_less_use_less_lint = 1
-
 set nocompatible
 
 let g:ack_use_dispatch=1
 let g:go_version_warning = 0
 let g:ale_fix_on_save=1
 " Debugging settings to be uncommented
-" let g:ale_history_enabled=1
-" let g:ale_history_log_output=1
+"let g:ale_history_enabled=1
+"let g:ale_history_log_output=1
 let g:ale_completion_enabled = 1
 if executable('tan')
     let g:ale_python_black_executable='tan'
@@ -33,13 +26,15 @@ endif
 
 let g:ale_go_golint_executable = expand('~/go/bin/golint')  " Probably unnecessary if you have GOPATH set everywhere
 let g:ale_linters = {'go': ['golint', 'govet'], 'python': ['flake8', 'pylint']}
-let g:ale_fixers = {'*': ['remove_trailing_lines', 'trim_whitespace'], 'java': ['google_java_format'], 'python': ['black'], 'go': ['gofmt']}
+let g:ale_fixers = {'*': ['remove_trailing_lines', 'trim_whitespace'], 'java': ['google_java_format'], 'python': ['black'], 'go': ['gofmt'], 'c': ['clangtidy', 'clang-format'], 'cpp': ['clangtidy', 'clang-format']}
 " ALE Rust
 let g:ale_rust_cargo_use_clippy=1
 " ALE Java
 let g:ale_java_google_java_format_options='-a'
 let g:pydocstring_doq_path = $HOME . '/.local/bin/doq'
 let g:pydocstring_formatter = 'google'
+
+let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-pyright', 'coc-clangd', 'coc-java', 'coc-css', 'coc-docker', 'coc-eslint', 'coc-html', 'coc-sh', 'coc-sql', 'coc-toml', 'coc-vimlsp']
 
 if executable('ag')
     let g:ackprg = 'ag --vimgrep'

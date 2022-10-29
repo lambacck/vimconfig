@@ -1,0 +1,4 @@
+{
+    "inlayHint.enable": false,
+    "clangd.arguments": ["--clang-tidy"]
+}
