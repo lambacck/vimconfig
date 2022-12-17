@@ -44,6 +44,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'heavenshell/vim-pydocstring'
 Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'joshdick/onedark.vim'
+Plug 'sainnhe/everforest'
 Plug 'tartansandal/vim-compiler-pytest'
 
 " Initialize plugin system

@@ -243,7 +243,9 @@ nmap <silent> <Leader>g :call Preserve("normal gg=G")<CR>
 nmap <silent> <Leader><space> :call Preserve("%s/\\s\\+$//e")<CR>
 
 if has("gui_running")
-    colorscheme onedark
+    let g:everforest_background = 'hard'
+    set background=light
+    colorscheme everforest
 endif
 
 let g:template_username="Chris Lambacher"
@@ -279,6 +281,9 @@ set statusline+=%L
 set statusline+=\ %{LinterStatus()}
 
 nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
