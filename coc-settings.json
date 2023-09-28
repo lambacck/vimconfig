@@ -1,4 +1,16 @@
 {
     "inlayHint.enable": false,
-    "clangd.arguments": ["--clang-tidy"]
+    "clangd.arguments": ["--clang-tidy"],
+	"languageserver": {
+		"terraform": {
+			"command": "terraform-ls",
+			"args": ["serve"],
+			"filetypes": [
+				"terraform",
+				"tf"
+			],
+			"initializationOptions": {},
+			"settings": {}
+		}
+	}
 }

@@ -20,7 +20,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-git'
 Plug 'vim-python/python-syntax'
 Plug 'sjl/gundo.vim'
-Plug 'msanders/snipmate.vim'
 Plug 'maksimr/vim-jsbeautify'
 Plug 'lambacck/vim-matchit'
 Plug 'lambacck/python_matchit'
@@ -46,6 +45,7 @@ Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'joshdick/onedark.vim'
 Plug 'sainnhe/everforest'
 Plug 'tartansandal/vim-compiler-pytest'
+Plug 'hashivim/vim-terraform'
 
 " Initialize plugin system
 call plug#end()
