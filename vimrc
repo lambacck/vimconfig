@@ -71,6 +71,7 @@ if $PYTEST_EXECUTABLE != ""
 endif
 
 if has("win32")
+    let g:plug_url_format = 'git@github.com:%s.git'
     let g:netrw_cygwin = 0
     let g:netrw_ssh_cmd  = 'C:\"Program Files"\PuTTY\plink.exe -T -ssh'
     let g:netrw_scp_cmd  = 'C:\"Program Files"\PuTTY\pscp.exe -q -scp'
