@@ -1,16 +1,44 @@
 {
+    "suggest.noselect": true,
     "inlayHint.enable": false,
-    "clangd.arguments": ["--clang-tidy"],
-	"languageserver": {
-		"terraform": {
-			"command": "terraform-ls",
-			"args": ["serve"],
-			"filetypes": [
-				"terraform",
-				"tf"
-			],
-			"initializationOptions": {},
-			"settings": {}
-		}
-	}
+    "languageserver": {
+        "terraform": {
+            "command": "terraform-ls",
+            "args": [
+                "serve"
+            ],
+            "filetypes": [
+                "terraform",
+                "tf"
+            ],
+            "initializationOptions": {},
+            "settings": {}
+        }
+    },
+    "java.jdt.ls.java.home": "/Users/clambacher/.jenv/versions/17.0/",
+    "java.jdt.ls.vmargs": "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xms1G -Xmx10G -Xlog:disable -noverify -XX:+UseG1GC -XX:+UseStringDeduplication",
+    "java.import.maven.enabled": true,
+    "java.import.gradle.enabled": false,
+    "java.configuration.runtimes": [
+        {
+            "name": "JavaSE-11",
+            "path": "/Users/clambacher/.jenv/versions/11.0/",
+            "default": true
+        },
+        {
+            "name": "JavaSE-15",
+            "path": "/Users/clambacher/.jenv/versions/15.0/"
+        }
+    ],
+    "clangd.path": "/opt/homebrew/opt/llvm/bin/clangd",
+    "clangd.arguments": [
+        "-j",
+        "4",
+        "--clang-tidy",
+        "--enable-config",
+        "--pch-storage=disk"
+    ],
+    "java.import.gradle.java.home": "/opt/onejdk/openjdk_11.0.17_11.60.20_aarch64/zulu-11.jdk/Contents/Home",
+    "coc.preferences.formatOnSave": true,
+    "python.formatting.provider": "ruff"
 }

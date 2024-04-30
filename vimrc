@@ -15,22 +15,35 @@ set nocompatible
 
 let g:ack_use_dispatch=1
 let g:go_version_warning = 0
-let g:ale_fix_on_save=1
+"let g:ale_fix_on_save=1
 " Debugging settings to be uncommented
 "let g:ale_history_enabled=1
 "let g:ale_history_log_output=1
-let g:ale_completion_enabled = 1
-if executable('tan')
-    let g:ale_python_black_executable='tan'
+"let g:ale_completion_enabled = 1
+" if executable('tan')
+"     let g:ale_python_black_executable='tan'
+" endif
+
+if has("nvim")
+    let g:python3_host_prog = $HOME . '/.virtualenvs/neovimpython/bin/python'
+    let g:ruby_host_prog = '/opt/homebrew/Cellar/ruby/3.2.2/bin/ruby'
+    let g:node_host_prog = '/opt/homebrew/bin/neovim-node-host'
 endif
 
-let g:ale_go_golint_executable = expand('~/go/bin/golint')  " Probably unnecessary if you have GOPATH set everywhere
-let g:ale_linters = {'go': ['golint', 'govet'], 'python': ['flake8', 'pylint']}
-let g:ale_fixers = {'*': ['remove_trailing_lines', 'trim_whitespace'], 'java': ['google_java_format'], 'python': ['black'], 'go': ['gofmt'], 'c': ['clangtidy', 'clang-format'], 'cpp': ['clangtidy', 'clang-format']}
-" ALE Rust
-let g:ale_rust_cargo_use_clippy=1
-" ALE Java
-let g:ale_java_google_java_format_options='-a'
+"let g:ale_c_clangd_executable = "arch"
+"let g:ale_cpp_clangd_executable = "arch"
+"let g:ale_c_clangformat_use_local_file = 1
+"let g:ale_c_clangd_options = "-x86_64 clangd --clang-tidy --background-index"
+"let g:ale_cpp_clangd_options = " -x86_64 clangd --clang-tidy --background-index"
+"let g:ale_go_golint_executable = expand('~/go/bin/golint')  " Probably unnecessary if you have GOPATH set everywhere
+"let g:ale_linters = {'go': ['golint', 'govet'], 'python': ['flake8', 'pylint']}
+"", "c": ['clangd'], 'cpp': ['clangd']}
+"let g:ale_fixers = {'*': ['remove_trailing_lines', 'trim_whitespace'], 'java': ['google_java_format'], 'python': ['black'], 'go': ['gofmt'], 'cpp': ['clang-format', 'clangtidy'], 'c': ['clang-format', 'clangtidy']}
+"let g:ale_linters_ignore = { 'cc': ['clangd', 'clangtidy', 'cc'], 'cpp': ['clangd', 'clangtidy', 'cc'], 'c': ['clangd', 'clangtidy', 'cc'] }
+"" ALE Rust
+"let g:ale_rust_cargo_use_clippy=1
+"" ALE Java
+"let g:ale_java_google_java_format_options='-a'
 let g:pydocstring_doq_path = $HOME . '/.local/bin/doq'
 let g:pydocstring_formatter = 'google'
 
@@ -97,7 +110,7 @@ set wildmode=list:longest
 set history=500
 set visualbell
 set relativenumber
-set textwidth=99
+"set textwidth=99
 "set undofile
 "set scrolloff=3
 "set ignorecase
@@ -120,6 +133,7 @@ inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
 
+set rtp+=/opt/homebrew/opt/fzf
 
 runtime vimplug_config.vim
 "runtime bundle/pathogen/autoload/pathogen.vim
@@ -134,7 +148,7 @@ if has("gui_running")
     set guioptions+=c
     set guioptions+=a
     if has("gui_macvim")
-        set guifont=CaskaydiaCoveNerdFontCompleteM-:h12
+        set guifont=CaskaydiaCoveNF-Regular:h14
     elseif has("gui_gtk2")
         if matchstr($SSH_CLIENT, '^10.66.66.\d\+ .*')
             set guifont=ProggyCleanTT\ 15
@@ -153,14 +167,13 @@ endif
 if has("autocmd")
 
     " Enable file type detection.
-    " Use the default filetype settings, so that mail gets 'tw' set to 72,
     " 'cindent' is on in C files, etc.
     " Also load indent files, to automatically do language-dependent indenting.
     filetype plugin indent on
 
-    " For all text files set 'textwidth' to 78 characters.
-    autocmd FileType text setlocal textwidth=78 noai nocin spell spelllang=en_gb
-    autocmd FileType tex setlocal textwidth=78 noai nocin spell spelllang=en_gb
+    " For all text files
+    autocmd FileType text setlocal noai nocin spell spelllang=en_gb
+    autocmd FileType tex setlocal tnoai nocin spell spelllang=en_gb
     autocmd FileType tex compiler latex
     autocmd FileType bib setlocal nowrap
 
@@ -173,7 +186,7 @@ if has("autocmd")
     autocmd FileType make setlocal noet
 
     " For mail files turn of cin and ai
-    autocmd FileType mail setlocal textwidth=78 noai nocin spell spelllang=en_gb
+    autocmd FileType mail setlocal noai nocin spell spelllang=en_gb
 
     " For XML recognize : and - as part of a keyword
     autocmd FileType {xml,xslt} setlocal iskeyword+=\:,-
@@ -256,18 +269,18 @@ let g:tskelBitGroup_aspvbs = ['aspvbs', 'ciocvbs', 'html', 'css']
 let g:pyflakes_use_quickfix=0
 let g:syntastic_check_on_open=1
 let g:syntastic_javascript_checkers = ['eslint']
-function! LinterStatus() abort
-  let l:counts = ale#statusline#Count(bufnr(''))
+" function! LinterStatus() abort
+"   let l:counts = ale#statusline#Count(bufnr(''))
 
-  let l:all_errors = l:counts.error + l:counts.style_error
-  let l:all_non_errors = l:counts.total - l:all_errors
+"   let l:all_errors = l:counts.error + l:counts.style_error
+"   let l:all_non_errors = l:counts.total - l:all_errors
 
-  return l:counts.total == 0 ? '✨ all good ✨' : printf(
-        \   '😞 %dW %dE',
-        \   all_non_errors,
-        \   all_errors
-        \)
-endfunction
+"   return l:counts.total == 0 ? '✨ all good ✨' : printf(
+"         \   '😞 %dW %dE',
+"         \   all_non_errors,
+"         \   all_errors
+"         \)
+" endfunction
 
 set statusline=
 set statusline+=%m
@@ -341,3 +354,4 @@ nmap <leader>ac  <Plug>(coc-codeaction-cursor)
 nmap <leader>as  <Plug>(coc-codeaction-source)
 " Apply the most preferred quickfix action to fix diagnostic on the current line
 nmap <leader>qf  <Plug>(coc-fix-current)
+nnoremap <silent> gh :CocCommand clangd.switchSourceHeader<CR>
