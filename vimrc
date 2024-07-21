@@ -157,7 +157,7 @@ if has("gui_running")
         endif
     elseif has("gui_win32")
         "win32
-        set guifont=CaskaydiaCove_NF:h12:cANSI:qDRAFT
+        set guifont=CaskaydiaCove_NF:h12:cEASTEUROPE:qDRAFT,Lucida_Console:h12:cEASTEUROPE:qDRAFT,Consolas:h12:cEASTEUROPE:qDRAFT
         if has("multi_byte")
             set guifontwide=CascadiaCode:h12:cGB2312,Consolas:h12:cGB2312
         endif
