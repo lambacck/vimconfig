@@ -1,5 +1,5 @@
 {
-    "suggest.noselect": true,
+    // "suggest.noselect": true,
     "inlayHint.enable": false,
     "languageserver": {
         "terraform": {
@@ -15,19 +15,19 @@
             "settings": {}
         }
     },
-    "java.jdt.ls.java.home": "/Users/clambacher/.jenv/versions/17.0/",
-    "java.jdt.ls.vmargs": "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xms1G -Xmx10G -Xlog:disable -noverify -XX:+UseG1GC -XX:+UseStringDeduplication",
-    "java.import.maven.enabled": true,
-    "java.import.gradle.enabled": false,
+    "java.jdt.ls.java.home": "${env:JDK_11_HOME}",
+    //"java.jdt.ls.vmargs": "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xms1G -Xmx10G -Xlog:disable -noverify -XX:+UseG1GC -XX:+UseStringDeduplication",
+    "java.import.maven.enabled": false,
+    "java.import.gradle.enabled": true,
     "java.configuration.runtimes": [
         {
-            "name": "JavaSE-11",
-            "path": "/Users/clambacher/.jenv/versions/11.0/",
+            "name": "JavaSE-17",
+            "path": "${env:JDK_17_HOME}",
             "default": true
         },
         {
-            "name": "JavaSE-15",
-            "path": "/Users/clambacher/.jenv/versions/15.0/"
+            "name": "JavaSE-11",
+            "path": "${env:JDK_11_HOME}"
         }
     ],
     "clangd.path": "/opt/homebrew/opt/llvm/bin/clangd",
@@ -38,7 +38,7 @@
         "--enable-config",
         "--pch-storage=disk"
     ],
-    "java.import.gradle.java.home": "/opt/onejdk/openjdk_11.0.17_11.60.20_aarch64/zulu-11.jdk/Contents/Home",
+    "java.import.gradle.java.home": "${env:JDK_17_HOME}",
     "coc.preferences.formatOnSave": true,
     "python.formatting.provider": "ruff"
 }
