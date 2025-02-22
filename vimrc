@@ -49,7 +49,11 @@ let g:pydocstring_formatter = 'google'
 
 let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-pyright', 'coc-clangd', 'coc-java', 'coc-css', 'coc-docker', 'coc-eslint', 'coc-html', 'coc-sh', 'coc-sql', 'coc-toml', 'coc-vimlsp']
 
-if executable('ag')
+if executable('rg')
+    let g:ackprg='rg --vimgrep'
+    setg grepprg=rg\ --vimgrep
+    setg grepformat=%f:%l:%c:%m
+elseif executable('ag')
     let g:ackprg = 'ag --vimgrep'
     setg grepprg=ag\ --vimgrep
     setg grepformat=%f:%l:%c:%m,%f:%l:%m

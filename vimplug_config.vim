@@ -46,6 +46,8 @@ Plug 'joshdick/onedark.vim'
 Plug 'sainnhe/everforest'
 Plug 'tartansandal/vim-compiler-pytest'
 Plug 'hashivim/vim-terraform'
+Plug 'neoclide/jsonc.vim'
+Plug 'jremmen/vim-ripgrep'
 
 " Initialize plugin system
 call plug#end()
